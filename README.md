@@ -38,16 +38,12 @@ python -m venv venv
  ```
 call venv/scripts/activate 
  ```
-5.cd into leg_day_bae folder
-```
-cd leg_day_bae
-``` 
-6.Make migrations & migrate
+5.Make migrations & migrate
 ```
 python manage.py makemigrations
 python manage.py migrate
 ```
-7.Runserver
+6.Runserver
 ```
 python manage.py runserver
 ```
