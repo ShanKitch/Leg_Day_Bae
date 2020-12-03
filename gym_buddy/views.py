@@ -325,3 +325,7 @@ def delete_reply(request, id):
     destroy_reply=Comment_Reply.objects.get(id=id)
     destroy_reply.delete()
     return redirect('/forum')
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')
