@@ -1,0 +1,152 @@
+body{
+    background: linear-gradient(to bottom, #3C3C3C, #6A6A6B, #7A797A, #8A8A8A);
+    color:#26BCFF;
+    padding-bottom:1em;
+    font-family: 'Rubik Mono One';
+  
+}
+.row{
+    text-align:center;
+    padding-bottom:0.625em;
+}
+#logo{
+    width:50em;
+}
+.row h2{
+    color:#26bcff;
+    text-shadow: 0.125em 0.125em black;
+}
+
+#header{
+    background: linear-gradient(to bottom, #1a1a1a, #262622, #333333, #404040);
+    border: 0.125em solid #26bcff;
+    margin-bottom: 1.25em;
+
+}
+
+ h2, h3, h1, label, h4{
+    text-shadow: 0.125em 0.125em #26bcff;
+    margin-top:-0.3125em;
+    padding-bottom:0.625em;
+    color:black;
+
+}
+
+a{
+    color:white;
+    font-size:14pt;
+    text-shadow:0.125em 0.125em black;
+}
+
+#posts{
+    text-align:center;
+}
+
+.col-md-10-offset-4{
+    text-align:center;
+    display:inline-block;
+}
+
+.forum_content, input#post_comment.form-control, #reply_comment.form-control{
+    background:linear-gradient(to bottom, #26BCFF, #4DC6FF, #99DFFF);
+    height:auto;
+    font-family:'Rubik';
+    font-weight:bold;
+    font-size:13pt;
+    padding-bottom:0.3125em;
+    color:black;
+    border: 0.125em solid black;
+}
+
+p.post, p.comment{
+    color: black;
+    text-shadow:none;
+    padding-top:0.625em;
+}
+
+.form-group{
+   text-align: center;
+}
+#newmessage.row{
+    text-align:center;
+}
+
+.col-md-12{
+    margin-left:9.375em;
+}
+h2, h1{
+    text-align:center;
+    margin-top:0.8125em;
+}
+
+form#new_topic{
+    width: 43.75em;
+   
+}
+
+p.poster{
+    text-align:left;
+    text-shadow:0.125em 0.125em #26bcff;
+    color:black;
+   
+}
+
+label{
+    float:left;
+    margin-top:0.625em;
+}
+
+h4.reply_to{
+    padding-top: 2.5em;
+}
+
+
+
+a#forum{
+    font-size:12pt;
+}
+
+#one_post{
+    padding-top:1.25em;
+    display:inline-block;
+    
+}
+
+.col-md-3{
+    border: 2px solid #26bcff;
+    margin: 0.625em 0.625em 0.625em 0.625em;
+    
+}
+
+#main.col-lg-10-offset-2{
+    margin-left:250px;
+    text-align:center;
+}
+a#delete{
+    float:left;
+    font-size:11pt;
+    margin-top:0.1875em;
+    font-family:'Rubik Mono One';
+    font-weight:normal;
+}
+
+#comments{
+    margin-top:1.875em;
+}
+
+form{
+    margin-top:0.9375em;
+    margin-bottom:0.625em;
+}
+button.btn-primary{
+    background-color: black;
+    color: #26bcff;
+    box-shadow: 0.125em 0.125em #26bcff;
+    text-shadow:none;
+}
+p.posted_at{
+    color:black;
+    text-shadow:none;
+    font-family:'Rubik';
+    
+}

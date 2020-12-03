@@ -1,0 +1,111 @@
+body{
+    background: linear-gradient(to bottom, #3C3C3C, #6A6A6B, #7A797A, #8A8A8A);
+    color:#26BCFF;
+    padding-bottom:500px;
+    font-family: 'Rubik Mono One';
+    min-width: 1080px;
+}
+.row{
+    text-align:center;
+    padding-bottom: 10px;
+}
+#logo{
+    width:800px;
+}
+
+h2, a, thead, tbody{
+    text-shadow: 2px 2px black;
+    margin-top:-5px;
+    padding-bottom:10px;
+}
+
+.row h2{
+     font-size:30pt;
+}
+
+#header{
+    background: linear-gradient(to bottom, #1a1a1a, #262622, #333333, #404040);
+    border: 2px solid #26bcff;
+    margin-bottom: 30px;
+}
+
+thead{
+    font-size:18pt;
+    text-shadow: 2px 2px #26BCFF;
+    color: black;
+    text-align:center;
+}
+
+th{
+    text-align:center;
+}
+
+td#username{
+    font-size:13pt;
+    font-family:'Rubik Mono One';
+}
+
+a{
+    color:white;
+    font-size:14pt;
+}
+
+td{
+    font-size:13pt;
+    font-family:'Rubik';
+    text-align:center;
+}
+
+#avatar{
+    width:50px;
+    height:50px;
+    float:left;
+
+}
+
+.searchbar{
+    max-width:500px;
+    width:100%;
+}
+
+#searchtext{
+    text-align:center;
+}
+h3{
+    text-shadow: 2px 2px #26BCFF;
+    color: black;
+    text-align:center;
+}
+table#all_users.table.table-bordered.table-sm.dataTable.no-footer{
+    margin-top:30px;
+
+}
+
+table.dataTable tbody tr {
+    background: linear-gradient(to bottom, #1a1a1a, #262622, #333333, #404040);
+}
+
+label, .dataTables_info, #searchtext{
+    text-shadow: 2px 2px #26BCFF;
+    color: black;
+    font-size:12pt;
+}
+
+input{
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    margin-left: 3px;
+}
+
+a#all_users_previous.paginate_button.previous.disabled, a#all_users_next.paginate_button.next.disabled{
+    text-shadow: 2px 2px #26BCFF;
+    color: black;
+    font-size:12pt;
+}
+
+
+.dataTables_wrapper{
+    color:none;
+}

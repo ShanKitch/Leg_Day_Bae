@@ -1,0 +1,106 @@
+body{
+    background: linear-gradient(to bottom, #3C3C3C, #6A6A6B, #7A797A, #8A8A8A);
+    color:#26BCFF;
+    padding-bottom:1em;
+    font-family: 'Rubik Mono One';
+    height:auto;
+  
+}
+.row{
+    text-align:center;
+    padding-bottom:0.625em;
+   
+}
+#logo{
+    width:50em;
+}
+
+h2{
+    text-shadow: 0.125em 0.125em black;
+    margin-top: -0.3125em;
+    text-align:center;
+    padding-bottom:0.625em;
+    font-size:30pt;
+}
+
+#header{
+    background: linear-gradient(to bottom, #1a1a1a, #262622, #333333, #404040);
+    border: 0.125em solid #26bcff;
+    margin-bottom: 1.25em;
+}
+
+
+h3, h4{
+    text-shadow: 0.125em 0.125em black;
+    margin-top:-0.3125em;
+    text-align:center;
+    padding-top:0.4375em;
+    padding-bottom:0.4375em;
+}
+
+h4{
+    font-size:15pt;
+}
+
+button.btn.btn-primary{
+    background-color: #26BCFF;
+    color: black;
+    box-shadow: 0.125em 0.1256em black;
+    width:15.625em;
+    margin-left:4.6875em;
+     
+}
+input#message.form-control{
+    width:25em;
+    height:18.75em;
+    padding-bottom:17.5em;
+    
+    
+}
+
+#subject, #sender{
+    width:25em;
+    
+}
+
+.col-md-4{
+    margin-top:1.25em;
+}
+
+#profilepic{
+    width:31.25em;
+    height:31.25em;
+    border:solid 0.125em #26BCFF;
+    
+}
+
+a{
+ text-shadow: 0.125em 0.125em black; 
+ color:white;  
+ font-size:14pt;
+}
+
+form{
+    margin-left:6.25em;
+}
+
+label{
+   margin-top:0.3125em;
+}
+
+h3.category, h3.info, h4.category, h4.info{
+    display:inline-block;
+}
+
+h3.category, h4.category, h3.message, label{
+    text-shadow: 0.125em 0.125em #26BCFF;
+    color: black;
+}
+
+#profile_info.col-md-4{
+    margin-top:1.25em;
+}
+
+h3.message{
+    margin-bottom:0px;
+}

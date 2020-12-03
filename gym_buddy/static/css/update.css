@@ -1,0 +1,132 @@
+body{
+    background: linear-gradient(to bottom, #3C3C3C, #6A6A6B, #7A797A, #8A8A8A);
+    color:#26BCFF;
+    padding-bottom:1em;
+    font-family: 'Rubik Mono One';
+  
+}
+.row{
+    text-align:center;
+    padding-bottom:0.625em;
+}
+#logo{
+    width:50em;
+}
+
+#header{
+    background: linear-gradient(to bottom, #1a1a1a, #262622, #333333, #404040);
+    border: 0.125em solid #26bcff;
+    margin-bottom: 1.25em;
+}
+
+h2{
+    text-shadow: 0.125em 0.125em black;
+    margin-top: -0.3125em;
+    text-align:center;
+    padding-bottom:0.625em;
+    font-size:30pt;;
+}
+
+.row h2{
+     font-size:30pt;
+}
+
+h3, h4, a{
+    text-shadow: 0.125em 0.125em black;
+    margin-top:-0.3125em;
+    text-align:center;
+    padding-top:0.4375em;
+    padding-bottom:0.4375em;
+}
+
+label{
+    text-shadow: 0.125em 0.125em black;
+    font-size:16pt;
+    
+}
+
+.row#updateprofile{
+    background-color: black;
+    color: #26bcff;
+    box-shadow: 0.125em #26bcff;
+    text-shadow:none;
+    width:15.625em;
+    padding:0.3125em 0.3125em 0.3125em 0.3125em; 
+}
+.col-md-4, .col-md-5, .profilepic{
+    font-family: 'Rubik';
+    
+}
+button#updateprofile.btn.btn-primary{
+    background-color: black;
+    color: #26bcff;
+    box-shadow: 2px 2px black;
+    width:250px;
+    margin-left:250px; 
+
+
+}
+
+
+label#labels{
+    padding-top:0.9375em;
+    padding-bottom:0.3125em;
+    font-family:'Rubik Mono One';
+    font-weight:normal;
+    text-shadow: 0.125em 0.125em #26BCFF;
+    color: black;
+   
+}
+
+ul{
+    list-style-type:none;
+}
+#profilepic{
+    width:18.75em;
+    height:18.75em;
+    border: 0.125em solid #26bcff;
+}
+a{
+    color:white;
+    font-size:14pt;
+}
+
+#middle.col-md-4{
+    padding-left:  4.6875em;
+}
+
+input{
+    color:black;
+    font-weight:bold;
+    background-color:#26bcff;
+}
+
+h3.category, h3.info{
+    display:inline-block;
+
+
+}
+
+h3.category{
+    color:black;
+    text-shadow: 0.125em 0.125em #26BCFF;
+    
+}
+
+input#id_img{
+    display:inline-block;
+}
+
+
+input#img-text{
+    font-size:14pt;
+}
+
+
+select#id_location_state{
+    background-color: #26bcff;
+    color: black;
+    font-weight:bold;
+    box-shadow: 0.125em 0.125em black;
+    width:6.25em;
+}

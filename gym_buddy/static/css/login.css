@@ -1,0 +1,66 @@
+body{
+    background: linear-gradient(to bottom, #3C3C3C, #6A6A6B, #7A797A, #8A8A8A);
+    color:#26BCFF;
+    padding-bottom:500px;
+    font-family: 'Rubik Mono One';
+    min-width: 1080px;
+}
+.row{
+    text-align:center;
+    padding-bottom: 10px;
+}
+#logo{
+    width:800px;
+}
+
+h2{
+    font-weight:normal;
+    text-shadow: 2px 2px black;
+    color: #26bcff;
+    margin-top:-5px;
+    text-align:center;
+    padding-bottom:10px;
+}
+
+.row h2{
+     font-size:30pt;
+}
+
+#header{
+    background: linear-gradient(to bottom, #1a1a1a, #262622, #333333, #404040);
+    border: 2px solid #26bcff;
+    margin-bottom: 30px;
+}
+
+label{
+    font-weight:normal;
+    text-shadow: 2px 2px #26BCFF;
+    color: black;
+    font-size:14pt;
+}
+
+button.btn.btn-primary{
+    background-color: black;
+    color: #26bcff;
+    box-shadow: 2px 2px black;
+    width:250px;
+    margin-left:250px;    
+}
+#register{
+    margin-left:100px;
+}
+#login{
+    margin-left: 50px;
+}
+
+h2.category{
+    text-shadow: 2px 2px #26bcff;
+    color: black;
+
+}
+.form-control{
+    background-color:#26bcff;
+    color:black;
+    border: 1px solid black;
+    
+}

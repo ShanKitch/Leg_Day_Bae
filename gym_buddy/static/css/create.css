@@ -1,0 +1,79 @@
+body{
+    background: linear-gradient(to bottom, #3C3C3C, #6A6A6B, #7A797A, #8A8A8A);
+    color:#26BCFF;
+    padding-bottom:500px;
+    font-family: 'Rubik Mono One';
+    min-width: 1080px;
+}
+.row{
+    text-align:center;
+    padding-bottom: 10px;
+}
+#logo{
+    width:800px;
+}
+
+h2{
+    text-shadow: 2px 2px black;
+    margin-top:-5px;
+    text-align:center;
+    padding-bottom:10px;
+}
+
+.row h2{
+     font-size:30pt;
+}
+
+#header{
+    background: linear-gradient(to bottom, #1a1a1a, #262622, #333333, #404040);
+    border: 2px solid #26bcff;
+    margin-bottom: 30px;
+}
+
+label{
+    text-shadow: 2px 2px black;
+    font-size:16pt;
+    
+}
+
+#createaccount{
+    background-color: #26BCFF;
+    color: #3C3C3C;
+    box-shadow: 2px 2px black;
+    width:250px;  
+}
+.col-sm-4, .col-sm-4, .profilepic{
+    font-family: 'Rubik';
+     width:500px;
+}
+.createprofile{
+    margin-left: 250px;
+}
+.col-sm-6{
+     margin-top: 75px; 
+}
+
+label#labels{
+   
+    padding-top:15px;
+    padding-bottom:5px;
+    font-family:'Rubik Mono One';
+    font-weight:normal;
+    text-shadow: 2px 2px #26BCFF;
+    color: black;
+   
+}
+
+
+ul{
+    list-style-type:none;
+}
+
+#one.col-sm-4{
+    width:600px;
+    margin-left:-50px;
+}
+
+input{
+    color:black;
+}
