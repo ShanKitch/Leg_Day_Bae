@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Rubik Mono One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    {% load static %}
+    {% load workout_type_tags %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/forum.css' %}">
+    <title>Leg Day Bae Forum</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" style="text-align:center;" id="header">
+            <img src="{% static 'images/logo.png' %}" id="logo" />
+            <h2>Hi, {{request.session.user}}! Welcome to the Leg Day Bae Forum!</h2>
+            <a href="/logout">Log Out</a> | <a href="/home">Home</a> | <a href="/inbox">My Messages</a> | <a href="/update/{{request.session.user_id}}">Update My Profile</a>
+        </div>
+        <div class="row" id="new_message">
+            <div class="col-md-10-offset-4">
+                <h2>Post A New Forum Message</h2>
+                <div class="col-md-6-offset-6">
+                    <form action="/forum_post" method="post" id="new_topic">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <label for={{"message_subject"}}>Message Topic:</label>
+                            <input class="form-control" name="message_subject" id="message_subject" type="text">
+                            <label for "forum_message">Message:</label>
+                            <input type="text" name="forum_message" id="forum_message" class="form-control">
+                        </div>
+                        <button class="btn btn-primary" id="new_post">Post Forum Message</button>
+                    </form> 
+                    <div class="success" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <h1>Leg Day Bae Forum</h1>
+        <div class="row" id="main">
+            <div class="col-md-12">
+                {% for post in forum_posts %}
+                    <div class="col-md-3"> 
+                        <div id="one_post">                         
+                            <h3>{{post.message_subject}}</h3>
+                            <p class='poster'>Posted By:<a href='/view/{{post.poster.id}}' id="forum">{{post.poster.username}}</a></p>
+                            <p class='posted_at'>Posted On:{{post.time_stamp}}</p>
+                            <div class="forum_content">
+                                <p class='post'>{{post.forum_message}}</p>                   
+                            </div>
+                            {% if post.poster.id == request.session.user_id %}
+                                <a href="/delete_post/{{post.id}}" class="delete_post">Delete Post</a>
+                            {% endif %}
+                            <form action="/post_comment/{{post.id}}" method="post">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" name="post_comment" id="post_comment" class="form-control">
+                                </div>
+                                <button class="btn btn-primary" id="reply_to">Reply to {{post.poster.username}}</button>
+                                </form>
+                            <div id="one_comment">
+                                <h4 class="reply">Replies:</h4>
+                                {% for comment in post.post_comments.all %}
+                                    <p class='poster'>Commenter: <a href='/view/{{comment.poster.id}}' id="forum">{{comment.poster.username}}</a></p>
+                                    <p class='posted_at'>Replied On:{{comment.timestamp}}</p>
+                                    <div class="forum_content">
+                                        <p class='comment'>{{comment.comment}}</p>
+                                    </div>
+                                    {% if comment.poster.id == request.session.user_id %}
+                                        <a href="/delete_comment/{{comment.id}}" id="delete">Delete Comment</a> 
+                                    {% endif %}
+                                    <br>
+                                    <form action="/reply_comment/{{comment.id}}" method="post">
+                                    {% csrf_token %}
+                                        <div class="form-group">
+                                            <input type="text" name="reply_comment" id="reply_comment" class="form-control">
+                                        </div>
+                                        <button class="btn btn-primary" id="new_comment">Reply to {{comment.poster.username}}</button>
+                                    </form>
+                                    {% for reply_comment in comment.reply_comments.all %}
+                                        <p class='poster'>Commenter: <a href='/view/{{reply_comment.poster.id}}' id="forum">{{reply_comment.poster.username}}</a></p>
+                                        <p class='posted_at'>Replied On:{{reply_comment.timestamp}}</p>
+                                        <div class="forum_content">
+                                            <p class='comment'>{{reply_comment.reply_comment}}</p>
+                                        </div>
+                                        {% if reply_comment.poster.id == request.session.user_id %}
+                                            <a href="/delete_reply/{{reply_comment.id}}" id="delete">Delete Comment</a> 
+                                        {% endif %}
+                                        <form action="/reply_comment/{{reply_comment.id}}" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <input type="text" name="reply_comment" id="reply_comment" class="form-control">
+                                        </div>
+                                        <button class="btn btn-primary">Reply to {{reply_comment.poster.username}}</button>
+                                    </form>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <br>
+    
+    </div>
+<script>
+$(document).ready(function(){
+    $("a").hover(function(){
+        $(this).css("color", "#26bcff");
+        $(this).css("text-decoration", "none");
+        }, function(){
+        $(this).css("color", "white");
+    });
+    $("button").hover(function(){
+        $(this).css("background-color", "#26bcff");
+        $(this).css("text-decoration", "none");
+        $(this).css("color", "black");
+
+        }, function(){
+        $(this).css("background-color", "black");
+        $(this).css("color", "#26bcff");
+
+    });
+
+   
+    $("button.btn btn-primary").click(function(){
+        $('#one_post').fadeIn();
+    });
+
+    $("a.delete_post").click(function(){
+        $('#one_post').fadeOut();
+    });
+
+
+
+ 
+
+   
+})
+
+</script>  
+    
+</body>
+</html>

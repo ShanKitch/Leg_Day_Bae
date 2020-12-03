@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Leg Day Bae Homepage</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Rubik Mono One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+    {% load static %}
+    {% load workout_type_tags %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" style="text-align:center;" id="header">
+            <img src="{% static 'images/logo.png' %}" id="logo" />
+            <h2>Hi, {{request.session.user}}! Find Your At Home Gym Buddy!</h2>
+            <a href="/logout">Log Out</a> | <a href="/inbox">My Messages</a> | <a href="/forum">Leg Day Bae Forum</a> | <a href="/update/{{request.session.user_id}}">Update My Profile</a> 
+        </div>
+        <div id="searchtext">
+            <p>Use the Search Bar to filter Users by Username, Age, Sex, Workout Type, Preferred Workout Time or Location</p>
+        </div>
+        <table id='all_users' class="table table-bordered table-sm" cellspacing="0" width="100%">
+            <thead>
+                 <tr>
+                    <th class="th-sm">Username</th>
+                    <th class="th-sm">Age</th>
+                    <th class="th-sm">Sex</th>
+                    <th class="th-sm">Favorite Workouts</th>
+                    <th class="th-sm">Preferred Workout Time</th>
+                    <th class="th-sm">Location</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for profile in profiles %}
+                <tr>
+                    <td id="username"><img src='{{ profile.img.url }}' id="avatar"><a href='/view/{{profile.owner.id}}'>{{profile.owner.username}}</a></td>
+                    <td>{{profile.age}}</td>
+                    <td>{{profile.get_sex_display}}</td>
+                    <td>{{profile.workout_type|decode_workout_types}},{{profile.new_exercise}}</td>  
+                    <td>{{profile.get_time_day_display}}</td>
+                    <td>{{profile.location_city}}, {{profile.get_location_state_display}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h3> Click on a username to see if they could be your Leg Day Bae</h3>
+        
+        
+
+    </div>
+  
+<script>
+$(document).ready( function () {
+    $('#all_users').DataTable();
+} );
+    $("a").hover(function(){
+    $(this).css("color", "#26bcff");
+    $(this).css("text-decoration", "none");
+    }, function(){
+    $(this).css("color", "white");
+});
+</script>
+</body>
+</html>

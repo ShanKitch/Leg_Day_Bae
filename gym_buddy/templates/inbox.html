@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Rubik Mono One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    {% load static %}
+    {% load workout_type_tags %}
+    <link rel="stylesheet" href="{% static 'css/inbox.css' %}">
+    <title>Leg Day Bae Inbox</title>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" style="text-align:center;" id="header">
+            <img src="{% static 'images/logo.png' %}" id="logo" />
+            <h2>Hi, {{request.session.user}}! Find Your Gym Buddy!</h2>
+            <a href="/logout">Log Out</a> | <a href="/home">Home</a> | <a href="/forum">Leg Day Bae Forum</a> | <a href="/update/{{request.session.user_id}}">Update My Profile</a>
+        </div>
+        <h2 class="label">Your Inbox:</h2>
+         <table class="table table-bordered" id="inbox">
+                <thead>
+                    <th>From:</th>
+                    <th>Subject:</th>
+                    <th>Message:</th>
+                    <th>Received:</th>
+                    <th>Reply:</th>
+                    <th>Actions:</th>
+
+                </thead>
+                <tbody>
+                    {% for message in messages %}
+                    {% if message.read == False %}
+                        <tr class='unread'>
+                            <td id="from"><a href='/view/{{message.sender.id}}'>{{message.sender.username}}</a></td>
+                            <td id="subject">{{message.subject}}</td>
+                            <td id="message">{{message.message}}</td>
+                            <td id="timestamp">{{message.timestamp}}</td>
+                            <td id="reply">
+                                <form action="/reply_message" method="post">
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        <input class='form-control' name='sender' id='sender' value= {{request.session.username}} type="hidden">
+                                        <input class='form-control' name='subject' id='subject' type="text" value="Re: {{message.subject}}">          
+                                        <input type="text" name="message" id="message" class="form-control">
+                                        <input class='form-control' name='recipient'  type="hidden" value={{message.sender.id}}>
+                                        <br>
+                                        <button class="btn btn-primary">Reply to {{message.sender.username}}</button>
+                                    </div>
+                                </form>
+                            </td>
+                            <td id="actions"><a href="/mark_as_read/{{message.id}}" id="read">Mark As Read</a> |       
+                                <a href="/delete_message/{{message.id}}" id="delete">Delete</a> 
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr class='read'>
+                            <td id="from"><img src='{{ message.sender.img.url }}' id="avatar"><a href='/view/{{message.sender.id}}'> {{message.sender.username}}</a></td>
+                            <td id="read_subject">{{message.subject}}</td>
+                            <td id="read_message">{{message.message}}</td>
+                            <td id="read_timestamp">{{message.timestamp}}</td>
+                            <td id="reply_read">
+                            <form action="/reply_message" method="post">
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        <input class='form-control' name='sender' id='sender' value= {{request.session.username}} type="hidden">
+                                        <input class='form-control' name='subject' id='subject' type="text" value="Re: {{message.subject}}">          
+                                        <input type="text" name="message" id="message" class="form-control">
+                                        <input class='form-control' name='recipient'  type="hidden" value={{message.sender.id}}>
+                                        <br>
+                                        <button class="btn btn-primary">Reply to {{message.sender.username}}</button>
+                                    </div>
+                                </form>
+                            </td>  
+                            <td id="actions"><a href="/mark_as_unread/{{message.id}}" id="unread">Mark As Unread</a> |     
+                                <a href="/delete_message/{{message.id}}" id="delete">Delete</a> 
+                            </td>
+                        </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h2 class='label'>Your Sent Messages:</h2>
+            <table class="table table-bordered" id="sent">
+                <thead>
+                    <th>Sent To:</th>
+                    <th>Subject:</th>
+                    <th>Message:</th>
+                    <th>Received:</th>
+                    <th>Actions:</th>
+                </thead>
+                <tbody>
+                 {% for message in sent_messages %}
+                        <tr>
+                            <td id="to"><a href='/view/{{message.recipient.id}}'>{{message.recipient.username}}</a></td>
+                            <td id="subject">{{message.subject}}</td>
+                            <td id="message">{{message.message}}</td>
+                            <td id="timestamp">{{message.timestamp}}</td>
+                            <td id="actions"><a href="/delete_message/{{message.id}}" id="delete">Delete</a> 
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+  
+           
+        </div>
+    </div>
+<script>
+$(document).ready(function(){
+    $("button").hover(function(){
+        $(this).css("background-color", "#26bcff");
+        $(this).css("text-decoration", "none");
+        $(this).css("color", "black");
+
+        }, function(){
+        $(this).css("background-color", "black");
+        $(this).css("color", "#26bcff");
+
+});
+    $("a").hover(function(){
+        $(this).css("color", "#26bcff");
+        $(this).css("text-decoration", "none");
+        }, function(){
+        $(this).css("color", "white");
+});
+    $("a#delete").click(function(){
+        $('td').fadeOut();
+    });
+    $("a#read").click(function(){
+        $('td').fadeIn();
+    });
+    $("a#unread").click(function(){
+        $('td').fadeIn();
+    });
+});
+
+</script>  
+    
+</body>
+</html>
+</body>
+</html>

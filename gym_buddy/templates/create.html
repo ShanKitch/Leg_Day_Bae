@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Rubik Mono One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/create.css' %}">
+    <title>Leg Day Bae Create Account</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" style="text-align:center;" id="header">
+            <img src="{% static 'images/logo.png' %}" id="logo" />
+            <h2>Hi, {{request.session.user}}! Let's Finish Your Profile!</h2>
+        </div>
+        <div class="createprofile">
+            <form action="/create_profile" method="POST" enctype="multipart/form-data"> 
+                {% csrf_token %} 
+                    <div class="col-sm-4" id="one">
+                        <label for="{{ profileform.workout_type.workout_type}}" id="labels">What Kind of Workouts Do You Prefer?</label>
+                        <br>
+                        {{ profileform.workout_type }}
+                        <label for="{{ profileform.new_exercise.new}}" id="labels"> Other(Please Enter Activity):</label>
+                        {{ profileform.new_exercise}}
+                    </div>
+                    <div class="col-sm-4" id="two">
+                        <label for="{{ profileform.frequency.frequency}}" id="labels">How Many Times A Week Do You Workout?</label>
+                        {{ profileform.frequency}}
+                        <label for="{{ profileform.time_day.time_day }}" id="labels">Preferred Time To Workout:</label>
+                        {{ profileform.time_day }}
+                    </div>
+                    <div class="col-sm-4"id="three">
+                        <label for="{{ profileform.age.age}}" id="labels">Age:</label>
+                        <br>
+                        {{profileform.age}}
+                        <br>
+                        <label for="{{profileform.sex.sex}}" id="labels">Sex:</label>
+                        <br>
+                        {{profileform.sex}}
+                        <label for="{{profileform.location_city.city}}" id="labels">City:</label>
+                        <br>
+                        {{profileform.location_city}}
+                        <br>
+                        <label for="{{profileform.location_state.state}}" id="labels">State:</label>
+                        <br>
+                        {{profileform.location_state}}
+                    </div>
+                    <div class="col-sm-4" id="four">
+                        <label for="{{profileform.img.img}}" id="labels">Upload A Profile Picture:</label>
+                        {{profileform.img}}
+                    </div>
+                    <br>
+                    <div class="col-sm-6">
+                        <input type="submit" id="createaccount" value="Create Account">
+                    </div>
+            </form> 
+        </div>
+    </div>
+</body>
+<script>
+$(document).ready(function(){
+    $("button").hover(function(){
+        $(this).css("background-color", "#26bcff");
+        $(this).css("text-decoration", "none");
+        $(this).css("color", "black");
+
+        }, function(){
+        $(this).css("background-color", "black");
+        $(this).css("color", "#26bcff");
+
+});
+});
+
+</script>
+</html>
